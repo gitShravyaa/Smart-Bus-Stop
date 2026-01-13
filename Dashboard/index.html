@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Smart Bus Stop — Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Smart IoT Bus Stop</h1>
+    <p class="sub">Live Sensor Readings • Auto-Updating Dashboard</p>
+  </header>
+
+  <main class="container">
+
+    <!-- STATUS CARDS -->
+    <section class="status-row">
+      <div class="card">
+        <h3>Bus Status</h3>
+        <div id="bus-status" class="status-value">Loading…</div>
+      </div>
+
+      <div class="card">
+        <h3>Passenger</h3>
+        <div id="passenger-status" class="status-value">Loading…</div>
+      </div>
+
+      <div class="card">
+        <h3>Light</h3>
+        <div id="light-status" class="status-value">Loading…</div>
+      </div>
+    </section>
+
+    <!-- GRAPHS -->
+    <section class="graphs">
+      <div class="graph-card">
+        <h4>Distance (cm)</h4>
+        <canvas id="chart-distance"></canvas>
+      </div>
+
+      <div class="graph-card">
+        <h4>Passenger (IR)</h4>
+        <canvas id="chart-passenger"></canvas>
+      </div>
+
+      <div class="graph-card">
+        <h4>Light (LDR)</h4>
+        <canvas id="chart-light"></canvas>
+      </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <section class="controls">
+      <h3>Device Control</h3>
+      <div class="btn-row">
+        <button onclick="toggleLight('on')" class="btn on">Light ON</button>
+        <button onclick="toggleLight('off')" class="btn off">Light OFF</button>
+
+        <button onclick="toggleBuzzer('on')" class="btn buzz-on">Buzzer ON</button>
+        <button onclick="toggleBuzzer('off')" class="btn buzz-off">Buzzer OFF</button>
+      </div>
+
+      <div id="control-log" class="log">Waiting for commands…</div>
+    </section>
+  </main>
+
+  <footer>
+    <small>
+      Live Data from ThingSpeak • ESP32 Control at 
+      <code>http://10.239.29.173</code>
+    </small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
